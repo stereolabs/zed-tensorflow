@@ -1,9 +1,10 @@
-# Object detection using the ZED and Tensorflow
+# 3D Object Detection using ZED and Tensorflow
 
 Based on Tensorflow's object detection API tutorial, this Python 3 program will show how to detect, identify and locate objects using the ZED camera and Tensorflow's ssd_mobilenet inference model.
 
-
-![](./tf_zed_shibuya.jpg)
+<p align="center">
+  <img src="tf_zed_shibuya.jpg" width=676 height=450>
+</p>
 
 
 ## Dependencies
