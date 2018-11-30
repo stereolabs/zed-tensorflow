@@ -67,6 +67,10 @@ Run the code with python3
 python3 object_detection_zed.py
 ```
 
+## Using Docker
+
+A DockerFile is provided in the [docker folder](./docker)
+
 ## Notes
 
 ### CUDA / cuDNN version
