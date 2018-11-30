@@ -4,16 +4,29 @@
 
 Setup Docker and nvidia-docker, see https://github.com/stereolabs/zed-docker
 
-### Build the image
+## Building the image
 
-		docker build -t zed-yolo .
+To build the image open a terminal and run:
 
-### Run the image
+```Bash
+docker build -t zed-tensorflow .
+```
 
-Replace "/<some_path_to_svo_files>" with an actual local absolute path containing SVO files :
 
-		xhost +si:localuser:root
-		nvidia-docker run -it --privileged -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --env QT_X11_NO_MITSHM=1 --mount type=bind,source=/<some_path_to_svo_files>,target=/data,readonly zed-tensorflow
+## Running the sample
+
+
+Following the [instruction given here](https://github.com/stereolabs/zed-docker#opengl-support):
+
+```Bash
+xhost +si:localuser:root
+```
+
+Run the image :
+
+```Bash
+nvidia-docker run -it --privileged -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --mount type=bind,source=/<some_path_to_svo_files>,target=/data,readonly --env QT_X11_NO_MITSHM=1 zed-tensorflow
+```
 
 From within the container start the sample :
 
