@@ -27,7 +27,7 @@ The 3D Object Detection project depends on the following libraries:
 
 ### ZED SDK Installation
 
-Install the [ZED SDK](https://www.stereolabs.com/developers/release/) and the ZED [Python API](/getting-started/python-development/).
+Install the [ZED SDK](https://www.stereolabs.com/developers/release/) and the ZED [Python API](https://www.stereolabs.com/docs/getting-started/python-development/).
 
 ### cuDNN Installation
 
