@@ -1,4 +1,4 @@
-# 3D Object Detection using ZED and Tensorflow
+# 3D Object Detection using ZED and Tensorflow 1
 
 The ZED SDK can be interfaced with Tensorflow for adding 3D localization of custom objects detected with Tensorflow Object Detection API.
 In this Python 3 sample, we will show you how to detect, classify and locate objects in 3D space using the ZED stereo camera and Tensorflow SSD MobileNet inference model.
@@ -15,10 +15,10 @@ The 3D Object Detection project depends on the following libraries:
 
 * Python 3
 * CUDA
-* ZED SDK
+* ZED SDK 3
 * ZED Python API
 * cuDNN
-* Tensorflow
+* Tensorflow 1
 * Tensorflow Object Detection API
 * OpenCV
 
@@ -37,11 +37,11 @@ Install [cuDNN](https://developer.nvidia.com/cudnn). Read the [support](https://
 
 ### Tensorflow Object Detection API Installation
 
-Install Tensorflow with GPU support by reading the following [instructions](https://www.tensorflow.org/install/) for your target platform.
+Install Tensorflow 1 with GPU support by reading the following [instructions](https://www.tensorflow.org/install/) for your target platform.
 
 ```bash
 # GPU package for CUDA-enabled GPU cards
-pip3 install --upgrade tensorflow-gpu
+python -m pip install tensorflow==1.15
 ```
 
 Install Tensorflow Object Detection API by following these [instructions](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md) and download the model repository.

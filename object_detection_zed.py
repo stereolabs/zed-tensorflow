@@ -58,14 +58,17 @@ def capture_thread_func(svo_filepath=None):
     zed = sl.Camera()
 
     # Create a InitParameters object and set configuration parameters
-    init_params = sl.InitParameters()
-    init_params.camera_resolution = sl.RESOLUTION.RESOLUTION_HD720
-    init_params.camera_fps = 30
-    init_params.depth_mode = sl.DEPTH_MODE.DEPTH_MODE_PERFORMANCE
-    init_params.coordinate_units = sl.UNIT.UNIT_METER
-    init_params.svo_real_time_mode = False
+    input_type = sl.InputType()
     if svo_filepath is not None:
-        init_params.svo_input_filename = svo_filepath
+        input_type.set_from_svo_file(svo_filepath)
+
+    init_params = sl.InitParameters(input_t=input_type)
+    init_params.camera_resolution = sl.RESOLUTION.HD720
+    init_params.camera_fps = 30
+    init_params.depth_mode = sl.DEPTH_MODE.PERFORMANCE
+    init_params.coordinate_units = sl.UNIT.METER
+    init_params.svo_real_time_mode = False
+
 
     # Open the camera
     err = zed.open(init_params)
@@ -78,11 +81,12 @@ def capture_thread_func(svo_filepath=None):
     image_mat = sl.Mat()
     depth_mat = sl.Mat()
     runtime_parameters = sl.RuntimeParameters()
+    image_size = sl.Resolution(width, height)
 
     while not exit_signal:
         if zed.grab(runtime_parameters) == sl.ERROR_CODE.SUCCESS:
-            zed.retrieve_image(image_mat, sl.VIEW.VIEW_LEFT, width=width, height=height)
-            zed.retrieve_measure(depth_mat, sl.MEASURE.MEASURE_XYZRGBA, width=width, height=height)
+            zed.retrieve_image(image_mat, sl.VIEW.LEFT, resolution=image_size)
+            zed.retrieve_measure(depth_mat, sl.MEASURE.XYZRGBA, resolution=image_size)
             lock.acquire()
             image_np_global = load_image_into_numpy_array(image_mat)
             depth_np_global = load_depth_into_numpy_array(depth_mat)
