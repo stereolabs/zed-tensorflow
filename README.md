@@ -117,3 +117,6 @@ This sample uses 2 threads, one for the ZED images capture and one for the Tenso
 1. Performance is increased, as depth computation is done in parallel to inference.
 
 2. Tensorflow and the ZED SDK uses CUDA GPU computation and therefore requires the use of CUDA contexts. Since we currently can't share the CUDA Context between the ZED and TF, we have to separate the GPU computation. Each CUDA context must therefore have its own thread.
+
+## Support
+If you need assistance go to our Community site at https://community.stereolabs.com/
